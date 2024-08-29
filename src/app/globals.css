@@ -8,26 +8,115 @@
   --background-end-rgb: 255, 255, 255;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer base {
+  body {
+    @apply bg-black text-gray-200;
+  }
+
+  h1 {
+    @apply text-4xl  lg:text-5xl font-bold;
+  }
+
+  h2 {
+    @apply text-3xl  lg:text-4xl font-semibold;
+  }
+
+  h3 {
+    @apply text-2xl  lg:text-3xl;
+  }
+
+  .section {
+    @apply py-20;
+  }
+
+  .glow-texts {
+    animation: glowText 3.5s linear infinite;
+  }
+
+  @keyframes glowText {
+    0% {
+      @apply text-red-400;
+    }
+
+    25% {
+      @apply text-green-400;
+    }
+
+    50% {
+      @apply text-blue-400;
+    }
+
+    75% {
+      @apply text-yellow-400;
+    }
+
+    100% {
+      @apply text-red-400;
+    }
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.marquee {
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+}
+
+.marquee-items {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-around;
+  white-space: nowrap;
+  animation: marquee 20s linear infinite;
+  animation-play-state: running;
+}
+
+.marquee:hover .marquee-items {
+  animation-play-state: paused; /* Pause animation on hover */
+}
+
+.image-group {
+  display: grid;
+  place-items: center;
+  width: 9rem;
+  /* width: clamp(10rem, 2rem + 50vw, 30rem); */
+  padding: 1.5rem;
+}
+
+.img {
+  object-fit: contain;
+  width: 100%;
+  aspect-ratio: 16/9;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
+  }
+}
+
+@media (max-width: 767px) {
+  .image-group {
+    padding: 1rem;
   }
 }
