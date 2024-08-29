@@ -39,15 +39,19 @@ const Scene = () => {
         intensity={1.5}
         color={"#7aa2ff"} // Enhance the blue hue to simulate moonlight
       />
-      <ambientLight intensity={1} color={"#2d4f8b"} />
+      <ambientLight intensity={1.5} color={"#2d4f8b"} />
       <pointLight position={[0, 0, 2]} intensity={0.5} color={"#ffddaa"} />
       <pointLight position={[-2, 1, 1]} intensity={0.3} color={"#ffcc88"} />
       {/* Adjust the orbit controls */}
-      <OrbitControls enableZoom={false} enableRotate={true} autoRotate={true} />
+      <OrbitControls
+        enableZoom={false}
+        enableRotate={true}
+        autoRotate={true}
+      />
       <Suspense fallback={<Progressive />}>
         <Model />
       </Suspense>
-      <Environment preset="forest" environmentIntensity={1} />
+      <Environment preset="forest" environmentIntensity={1.5} />
     </Canvas>
   );
 };
