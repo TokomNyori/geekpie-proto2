@@ -104,7 +104,7 @@ function Hero() {
       <div className="relative h-80 md:h-[36rem] minxl:h-[100%] w-full flex justify-center items-start mt-14 md:mt-0">
         {/* <div className="absolute w-full bottom-0 inset-x-0 h-40 bg-gradient-to-b pointer-events-none select-none from-transparent dark:to-black to-white z-20" /> */}
         <div className="absolute w-full h-80 md:w-[95%] md:h-[95%] minxl:w-[95%] minxl:h-[95%] bottom-0 minxl:bottom-2 z-10 p-0">
-          <World data={sampleArcs} globeConfig={globeConfig} />
+          <Scene />
         </div>
       </div>
       <div className="absolute z-30 bottom-2 minxl:bottom-10 text-center mx-auto w-full text-neutral-300">
